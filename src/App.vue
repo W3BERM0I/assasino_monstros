@@ -57,7 +57,12 @@ export default {
     curar() {
       this.random = this.gerarNumEntre(12);
       this.player1.vida += this.random
-      this.ataque.push( {jogador: 'Jogador', pontos: this.random} )
+      if(this.player1.vida > 100) {
+        this.ataque.push( {jogador: 'Jogador', pontos: (100 - (this.player1.vida - this.random))} ) 
+        this.player1.vida = 100
+      } else {
+        this.ataque.push( {jogador: 'Jogador', pontos: this.random} ) 
+      }
 
       this.random = this.gerarNumEntre(8);
       this.player1.vida -= this.random
